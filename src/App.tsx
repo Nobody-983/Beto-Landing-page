@@ -7,15 +7,15 @@ import { Github } from './components/github'
 import axios from "axios"
 import { useEffect, useState } from 'react'
 
-function App() {
-  const [repos,setRepos] = useState([])
- type Repo = {
-  id: number
-  name: string
-  stars: number
-  forks: number
-  language: string | null
+type Repo = {
+ id: number
+ name: string
+ stars: number
+ forks: number
+ language: string | null
 }
+function App() {
+  const [repos, setRepos] = useState<Repo[]>([])
   //  console.log(import.meta.env.VITE_GITHUB_TOKEN)
   
   useEffect(() => {
