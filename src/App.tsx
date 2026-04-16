@@ -32,11 +32,13 @@ function App() {
         const data = res.data
         const cleaned = data
   .filter((repo: any) => repo.disabled !== true)
-  .map((repo: any) => ({
-    name: repo.name,
-    stars: repo.stargazers_count,
-    forks: repo.forks_count,
-  }))
+  .map((repo: any): Repo => ({
+  id: repo.id,
+  name: repo.name,
+  stars: repo.stargazers_count,
+  forks: repo.forks_count,
+  language: repo.language,
+}))
     
         console.log(res.data) // ✅ actual data
         setRepos(cleaned)
