@@ -25,7 +25,7 @@ function App() {
         const res = await axios.get(
           "https://api.github.com/users/Nobody-983/repos", {
             headers: {
-              Authorization: import.meta.env.VITE_MY_API_KEY
+              Authorization: `Bearer ${import.meta.env.VITE_MY_API_KEY}`
             }
         }
         )
