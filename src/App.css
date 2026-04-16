@@ -1,0 +1,14 @@
+@import "tailwindcss";
+body{
+  @apply bg-[url(./assets/images/background.png)] 
+  bg-cover bg-center text-amber-100 mx-auto mt-4
+}
+@theme {
+      /* This overwrites or adds to your breakpoints */
+
+  --breakpoint-sm: 300px;
+
+  --breakpoint-md: 500px;
+
+  --breakpoint-lg: 1360px;
+}

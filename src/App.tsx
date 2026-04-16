@@ -1,0 +1,80 @@
+  import { Profile } from './components/profile'
+  import { Projects } from './components/projects'
+  import './App.css'
+  import { Skills } from './components/skills'
+import { About } from './components/about'
+import { Github } from './components/github'
+import axios from "axios"
+import { useEffect, useState } from 'react'
+
+function App() {
+  const [repos,setRepos] = useState([])
+ type Repo = {
+  id: number
+  name: string
+  stars: number
+  forks: number
+  language: string | null
+}
+  //  console.log(import.meta.env.VITE_GITHUB_TOKEN)
+  
+  useEffect(() => {
+    
+    async function test() {
+      try {
+        const res = await axios.get(
+          "https://api.github.com/users/Nobody-983/repos", {
+            headers: {
+              Authorization: import.meta.env.VITE_MY_API_KEY
+            }
+        }
+        )
+        const data = res.data
+        const cleaned = data
+  .filter((repo: any) => repo.disabled !== true)
+  .map((repo: any) => ({
+    name: repo.name,
+    stars: repo.stargazers_count,
+    forks: repo.forks_count,
+  }))
+    
+        console.log(res.data) // ✅ actual data
+        setRepos(cleaned)
+    
+      } catch (error: any) {
+        console.log("REAL ERROR:", error.response?.data)
+      }
+    }
+    
+    test()
+  }, [])
+  
+
+        const topRepos = repos.slice(0, 5)   
+  
+
+
+
+
+
+
+  
+ 
+// const topRepos = repos.slice(0, 3)
+  
+    return (
+      <div className="mx-auto justify-center mt-4 
+      grid gap-4 md:grid-cols-2 lg:grid-cols-3
+      w-[90%]">
+        <Profile />
+        <Skills />
+        <Projects />
+        <About />
+        <Github data={topRepos} />
+        
+
+  </div>
+    )
+  }
+
+  export default App
