@@ -14,24 +14,25 @@ type Repo = {
  forks: number
  language: string | null
 }
+
 function App() {
   const [repos, setRepos] = useState<Repo[]>([])
-  console.log(import.meta.env.VITE_MY_API_KEY)
-  console.log(import.meta.env)
+  console.log( import.meta.env.VITE_MY_API_KEY)
+  // console.log(import.meta.env)
   //  console.log(import.meta.env.VITE_GITHUB_TOKEN)
   
   useEffect(() => {
     
     async function test() {
-      const api = import.meta.env.VITE_MY_API_KEY
       try {
+        const api = import.meta.env.VITE_MY_API_KEY
         const res = await axios.get(
           api,
-          {
-            headers: {
-           Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`
-            }
-        }
+        //   {
+        //     headers: {
+        //    Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`
+        //     }
+        // }
         )
         const data = res.data
         const cleaned = data
