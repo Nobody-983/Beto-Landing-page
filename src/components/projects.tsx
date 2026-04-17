@@ -6,7 +6,7 @@ export function Projects () {
             <div className="grid grid-cols-2 m-4">
                 <div>
                     
-        <img src="/src/assets/images/projects/seeker.png" 
+        <img src="/projects/seeker.png" 
                 alt=""
                 className="lg:w-40 md:size-[90%] sm:size-[90%] " />
                     <p className="text-center">Seeker</p>
@@ -14,7 +14,7 @@ export function Projects () {
                 </div>
                 <div>
 
-                    <img src="/src/assets/images/projects/swiftly.png" 
+                    <img src="/projects/swiftly.png" 
                 alt=""
                         className="lg:w-40 md:size-[90%] sm:size-[90%] " />
                     <p className="text-center">Swiftly</p>

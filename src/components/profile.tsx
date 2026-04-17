@@ -4,7 +4,7 @@ export function Profile() {
             <div className="ml-8">
                 <div className=" mt-8 mr-8">
 
-        <img src="/src/assets/images/profile1.jpeg" 
+        <img src="/icons/profile.jpeg" 
                 alt=""
                 className="lg:w-80 md:w-100  mb-4  "/>
                 </div>

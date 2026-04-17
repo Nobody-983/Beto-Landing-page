@@ -23,9 +23,10 @@ function App() {
   useEffect(() => {
     
     async function test() {
+      const api = import.meta.env.VITE_MY_API_KEY
       try {
         const res = await axios.get(
-          "https://api.github.com/users/Nobody-983/repos",
+          api,
           {
             headers: {
            Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`
