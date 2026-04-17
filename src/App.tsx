@@ -16,6 +16,8 @@ type Repo = {
 }
 function App() {
   const [repos, setRepos] = useState<Repo[]>([])
+  console.log(import.meta.env.VITE_MY_API_KEY)
+  console.log(import.meta.env)
   //  console.log(import.meta.env.VITE_GITHUB_TOKEN)
   
   useEffect(() => {
@@ -23,9 +25,10 @@ function App() {
     async function test() {
       try {
         const res = await axios.get(
-          "https://api.github.com/users/Nobody-983/repos", {
+          "https://api.github.com/users/Nobody-983/repos",
+          {
             headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_MY_API_KEY}`
+           Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`
             }
         }
         )
