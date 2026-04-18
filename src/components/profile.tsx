@@ -1,6 +1,14 @@
+import { motion } from "framer-motion"
+import { cardVariants } from "./variant"
+
 export function Profile() {
     return (
-        <div className="border rounded-xl border-amber-200 ">
+        <motion.div
+        variants={cardVariants}
+            initial="initial"
+            whileTap="active"
+            whileHover="hover"
+            className="border rounded-xl border-amber-200 ">
             <div className="ml-8">
                 <div className=" mt-8 mr-8">
 
@@ -14,6 +22,6 @@ export function Profile() {
             <p className="mb-4">(Available for Hire)</p>
             </div>
 
-        </div>
+        </motion.div>
     )
 }

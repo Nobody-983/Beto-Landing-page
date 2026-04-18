@@ -6,13 +6,20 @@ import { About } from './components/about'
 import { Github } from './components/github'
 import axios from "axios"
 import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import { cardVariants } from './components/variant'
+
 
 type Repo = {
  id: number
  name: string
  stars: number
  forks: number
- language: string | null
+  language: string | null
+  homepage: string,
+  
+  clone: string
+ 
 }
 
 function App() {
@@ -28,11 +35,11 @@ function App() {
         const api = import.meta.env.VITE_MY_API_KEY
         const res = await axios.get(
           api,
-        //   {
-        //     headers: {
-        //    Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`
-        //     }
-        // }
+          {
+            headers: {
+           Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`
+            }
+        }
         )
         const data = res.data
         const cleaned = data
@@ -42,10 +49,12 @@ function App() {
   name: repo.name,
   stars: repo.stargazers_count,
   forks: repo.forks_count,
-  language: repo.language,
+    language: repo.language,
+    homepage: repo.homepage,
+  clone: repo.clone_url
 }))
     
-        console.log(res.data) // ✅ actual data
+        console.log(data) // ✅ actual data
         setRepos(cleaned)
     
       } catch (error: any) {
@@ -70,17 +79,23 @@ function App() {
 // const topRepos = repos.slice(0, 3)
   
     return (
-      <div className="mx-auto justify-center mt-4 
+      <motion.div
+        className="mx-auto justify-center mt-4 
       grid gap-4 md:grid-cols-2 lg:grid-cols-3
-      w-[90%]">
+      w-[90%]"
+      variants={cardVariants}
+  initial="initial"
+  
+  whileHover="hover"
+      >
         <Profile />
         <Skills />
-        <Projects />
+        <Projects data={topRepos} />
         <About />
         <Github data={topRepos} />
         
 
-  </div>
+  </motion.div>
     )
   }
 

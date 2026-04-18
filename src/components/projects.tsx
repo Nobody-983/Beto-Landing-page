@@ -1,7 +1,16 @@
-export function Projects () {
+import { motion } from "framer-motion"
+import { cardVariants } from "./variant"
+
+export function Projects({ data }) {
+        data.map((el)=>console.log(el))
+    
     return (
-        
-        <div className="border rounded-2xl  gap-4 
+        <motion.div
+        variants={cardVariants}
+        initial="initial"
+        whileTap="active"
+        whileHover="hover"
+            className="border rounded-2xl  gap-4 
         border-amber-200 w-[100%] ">
             <div className="grid grid-cols-2 m-4">
                 <div>
@@ -21,7 +30,7 @@ export function Projects () {
                 </div>
             </div>
             
-        </div>
+        </motion.div>
 
             
 
