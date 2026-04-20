@@ -1,5 +1,5 @@
   import { Profile } from './components/profile'
-  import { Projects } from './components/projects'
+  import { Seeker } from './components/seeker'
   import './App.css'
   import { Skills } from './components/skills'
 import { About } from './components/about'
@@ -8,7 +8,7 @@ import axios from "axios"
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { cardVariants } from './components/variant'
-
+import { Swiftly } from './components/swiftly'
 
 type Repo = {
  id: number
@@ -78,11 +78,13 @@ function App() {
  
 // const topRepos = repos.slice(0, 3)
   
-    return (
+  return (
+    <> 
+      
       <motion.div
         className="mx-auto justify-center mt-4 
       grid gap-4 md:grid-cols-2 lg:grid-cols-3
-      w-[90%]"
+      w-[90%] mb-8"
       variants={cardVariants}
   initial="initial"
   
@@ -90,12 +92,14 @@ function App() {
       >
         <Profile />
         <Skills />
-        <Projects data={topRepos} />
         <About />
         <Github data={topRepos} />
+        <Seeker />
+        <Swiftly />
         
 
   </motion.div>
+      </>
     )
   }
 

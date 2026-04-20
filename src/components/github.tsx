@@ -16,7 +16,7 @@ type Repo = {
 
 export function Github({ data }: { data: Repo[] }) {
   return (
-    <div className="w-full h-[400px] bg-white rounded-xl p-4 shadow">
+    <div className="w-full sm:h-[400px] lg:h-[90%] bg-white rounded-xl p-4 shadow">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data}>
           <XAxis dataKey="name" />
